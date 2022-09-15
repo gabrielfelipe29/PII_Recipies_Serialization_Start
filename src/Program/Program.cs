@@ -12,6 +12,7 @@ namespace Recipies
 {
     public class Program
     {
+        
         private static ArrayList productCatalog = new ArrayList();
 
         private static ArrayList equipmentCatalog = new ArrayList();

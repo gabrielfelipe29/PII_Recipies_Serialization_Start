@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace Recipies
 {
-    public class Equipment
+    public class Equipment:IJsonConvertible
     {
         [JsonConstructor]
         public Equipment(string description, double hourlyCost)
@@ -26,5 +26,22 @@ namespace Recipies
         public string Description { get; set; }
 
         public double HourlyCost { get; set; }
+
+
+        public void LoadFromJson(string json)
+        {
+
+            Equipment deserialized = JsonSerializer.Deserialize<Equipment>(json);
+
+            this.HourlyCost=deserialized.HourlyCost;
+            this.Description=deserialized.Description;
+        }
+
+        public string ConvertToJson(){
+
+            return JsonSerializer.Serialize(this);
+
+
+        }
     }
 }
